@@ -1,4 +1,9 @@
-# JAVA
+# APLICACIÓ JAVA
+
+Recorda que el codi Java es pot llegir quan s'hi té accés. Si el fitxer `Quiz.java` cau en mans equivocades es podrà llegir la contrasenya i accedir a la base de dades. En canvi, el fitxer `hday.jar` serà un fitxer compilat i serà més dificil llegir-lo. 
+
+Aquest programa té una dependència `mysql-connector`, si volem moure el fitxer `hday.jar` caldrà copiar-ne també la carpeta `lib` amb la amteixa forma relativa.
+
 
 ## Compilar
 ```bash
@@ -9,7 +14,7 @@ javac Quiz.java
 
 ## Crear JAR
 ```bash
-jar cvmf MANIFEST.MF hday.jar Quiz.class 
+jar cvmf MANIFEST.MF hday.jar *.class 
 ```
 
 ## Executar 

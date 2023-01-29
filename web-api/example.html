@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Resultats de la consulta a la base de dades</title>
+
+    <script>
+      function displayResults() {
+        fetch("/api/results")
+          .then(response => response.json())
+          .then(data => {
+            let resultTable = document.getElementById("results");
+            let resultRow = "";
+
+            resultRow += "<tr>";
+            resultRow += "<th> id </th>";
+            resultRow += "<th> username </th>";
+            resultRow += "<th> solved </th>";
+            resultRow += "<th> timestamp </th>";
+            resultRow += "</tr>";
+            
+            data.forEach(result => {
+              resultRow += "<tr>";
+              resultRow += "<td>" + result.id + "</td>";
+              resultRow += "<td>" + result.username + "</td>";
+              resultRow += "<td>" + result.solved + "</td>";
+              resultRow += "<td>" + result.timestamp + "</td>";
+              resultRow += "</tr>";
+            });
+            resultTable.innerHTML = resultRow;
+          });
+      }
+    </script>
+  </head>
+  
+  <body onload="displayResults()">
+    <table id="results">
+    </table>
+  </body>
+</html>
