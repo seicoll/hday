@@ -1,0 +1,2 @@
+Main-Class:  Quiz
+Class-Path: ./lib/mysql-connector-j-8.0.32.jar
