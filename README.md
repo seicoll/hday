@@ -32,7 +32,7 @@ sudo systemctl start mysql.service
 sudo mysql
 ```
 
-# Codi SQL per la base de dades
+## Codi SQL per la base de dades
 ```SQL
 
 -- Creació de la base de dades
