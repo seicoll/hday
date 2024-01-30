@@ -24,6 +24,14 @@ java -jar hday.jar
 
 
 # Codi SQL per la base de dades
+## Instal·lació MySQL
+```bash
+sudo apt update
+sudo apt install mysql-server
+sudo systemctl start mysql.service
+sudo mysql
+```
+
 ```SQL
 
 -- Creació de la base de dades
