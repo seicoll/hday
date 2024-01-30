@@ -23,7 +23,7 @@ java -jar hday.jar
 ```
 
 
-# Codi SQL per la base de dades
+# Base de dades
 ## Instal·lació MySQL
 ```bash
 sudo apt update
@@ -32,6 +32,7 @@ sudo systemctl start mysql.service
 sudo mysql
 ```
 
+# Codi SQL per la base de dades
 ```SQL
 
 -- Creació de la base de dades
