@@ -139,7 +139,7 @@ COMMIT;
 --
 -- User for the database `quiz`
 --
-CRETATE USER 'quiz_user'@'localhost' INDENTIFIED BY '1234';
+CREATE USER 'quiz_user'@'localhost' INDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON quiz.* TO 'quiz_user'@'localhost';
 FLUSH PRIVILEGES;
 ```
