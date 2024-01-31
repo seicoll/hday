@@ -136,5 +136,10 @@ ALTER TABLE `results`
   ADD CONSTRAINT `results_ibfk_1` FOREIGN KEY (`solved`) REFERENCES `questions` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
-
+--
+-- User for the database `quiz`
+--
+CRETATE USER 'quiz_user'@'localhost' INDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON quiz.* TO 'quiz_user'@'localhost';
+FLUSH PRIVILEGES;
 ```
