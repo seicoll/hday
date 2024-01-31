@@ -34,7 +34,7 @@ public class Quiz {
                         "                                |___/               |___/\n");
         
 
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "aniol", "1234");
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "sergi", "1234");
              Statement stmt = con.createStatement()) {
 
             ResultSet rs = stmt.executeQuery("SELECT `option`, value FROM info");
