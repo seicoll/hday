@@ -8,7 +8,7 @@ sudo apt update
 sudo apt install node
 sudo apt install npm
 npm i express
-npm i mysql2@3.0.0
+npm i mysql2@3.9.1
 ```
 
 ## Configura
