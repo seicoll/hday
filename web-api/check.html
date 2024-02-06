@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Resultats de la consulta a la base de dades</title>
+
+  <style>
+    #form {
+      margin: 0 auto;
+      width: 30%;
+      background-color: lightgrey;
+      padding: 2em;
+      text-align: center;
+    }
+
+    input,
+    button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+    }
+  </style>
+
+  <script>
+    function checkKey() {
+      let id = document.getElementById("id").value;
+      let key = document.getElementById("key").value;
+      let username = document.getElementById("username").value;
+
+      //console.log("/api/check?username=" + username + "&id=" + id + "&key=" + key);
+
+      fetch("/api/check?username=" + username + "&id=" + id + "&key=" + key)
+        .then((response) => response.text())
+        .then((text) => {
+          alert(text);
+        });
+    };
+  </script>
+</head>
+
+<body>
+  <div id="form">
+    <label for="username">User:</label>
+    <input id="username" type="text" />
+
+    <label for="username">Question number:</label>
+    <input id="id" type="text" />
+
+    <label for="username">Key:</label>
+    <input id="key" type="text"></input>
+
+    <button onclick="checkKey()">Send</button>
+
+    <a href="/">Results</a>
+  </div>
+</body>
+
+</html>
