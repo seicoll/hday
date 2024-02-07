@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql2');
 
-
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'sergi', // Usuari Base de dades
@@ -15,10 +14,12 @@ connection.connect(error => {
   console.log('Connectat a la base de dades');
 });
 
+//La ruta arrel / redirigeix /example.html
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/example.html');
 });
 
+//La ruta /check envia al formulari
 app.get('/check', (req, res) => {
   res.sendFile(__dirname + '/check.html');
 });
@@ -38,40 +39,41 @@ app.get("/api/check", (req, res) => {
   let id = req.query.id;
   let key = req.query.key;
 
-
   connection.query("SELECT * FROM questions WHERE id=" + id + " AND answer='" + key + "'", (error, results) => {
-    if (error) throw error
+    /*if (error) {
+      throw error
+    }
+    else {*/
+    if (results && results.length) {
+      //Si s'ha introduit la clau correcte
+
+      if (!resultExists(username, id))
+        //Si no s'havia registrat aquesta prova superada ho inserim
+        connection.query("INSERT INTO results (username, solved) VALUES ('" + username + "', " + id + ")"), (error, results) => {
+          if (error) throw error
+        };
+
+      res.set('Content-Type', 'text/html');
+      res.send("Prova superada!");
+    }
     else {
-
-      if (results.length) {
-        //Si s'ha introduit la clau correcte
-
-        if (!resultExists(username, id))
-          //Si no s'havia registrat aquesta prova superada ho inserim
-          connection.query("INSERT INTO results (username, solved) VALUES ('" + username + "', " + id + ")"), (error, results) => {
-            if (error) throw error
-          };
-
-        res.set('Content-Type', 'text/html');
-        res.send("Prova superada!");
-      }
-      else {
-        //Clau incorrecta
-        res.set('Content-Type', 'text/html');
-        res.send("Clau no correcta.");
-      }
-    };
+      //Clau incorrecta
+      res.set('Content-Type', 'text/html');
+      res.send("Clau no correcta.");
+    }
+    /*};*/
   });
 });
 
-app.listen(3000, () => {
-  console.log('API inicialitzada en el port 3000');
+//Iniciem l'aplicació web
+const port = 3000;
+app.listen(port, () => {
+  console.log(`API inicialitzada en el port ${port}! http://localhost:${port}`);
 });
-
-
 
 function resultExists(username, idQuestion) {
   //Comprovem si ja s'havia registrat aquesta prova superada
+
   connection.query("SELECT * FROM results WHERE username='" + username + "' AND solved=" + idQuestion, (error, results) => {
     if (error) throw error
     if (results.length) {
@@ -82,5 +84,3 @@ function resultExists(username, idQuestion) {
     };
   });
 };
-
-
