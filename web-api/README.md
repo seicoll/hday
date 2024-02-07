@@ -21,3 +21,5 @@ node app.js
 
 ## Prova
 El client node obre una api a `localhost:3000/results` on es proveix un fitxer JSON amb els resultats registrats a la base de dades.
+A `localhost:3000/check` es disposa d'un formulari per validar les claus de proves.
+
