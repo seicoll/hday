@@ -23,3 +23,8 @@ node app.js
 El client node obre una api a `localhost:3000/results` on es proveix un fitxer JSON amb els resultats registrats a la base de dades.
 A `localhost:3000/check` es disposa d'un formulari per validar les claus de proves.
 
+
+## Start node server on machine startup
+Si volem que el servidor node s'iniciï automàticament al iniciar l'equip i iniciï l'API pots seguir el tutorial: 
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04#step-3-installing-pm2
+
